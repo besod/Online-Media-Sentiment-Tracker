@@ -44,6 +44,9 @@ Before running the program install the modules in the picture.
 [2]   Jim, 'Web Scraping with Python - Beautiful Soup Crash Course' [https://www.youtube.com/watch?v=XVv6mJpFOb0&t=786s&ab_channel=freeCodeCamp.org],
 freeCodeCamp.org
 
+[3]  CSS Selectors,[https://www.geeksforgeeks.org/css-syntax-and-selectors/?ref=lbp], geek for geeks
+
+[4]  Beautiful Soup Documentation, [https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=css%20selector#css-selectors], Beautifulsoup
 
 
 
