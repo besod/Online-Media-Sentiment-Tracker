@@ -20,7 +20,7 @@ as property of the Website class object.
 The script loops through all the topics in the search word/topics list and announces 
 before it starts scraping for a topic: 
 
-<img width="104" alt="image" src="https://user-images.githubusercontent.com/113350472/218328751-f8055f9a-2bb4-45cf-9e55-046681c158a4.png">
+<img width="256" alt="image" src="https://user-images.githubusercontent.com/113350472/218481335-80c50202-54d6-4438-87a8-53a14c502619.png">
 
 Then it loops through all of the sites in the sites list and scrapes earch particular
 site for each particular topic. After successfully scraping information about a page,
@@ -34,9 +34,9 @@ it prints it in the terminal:
 
 
 ### How to run the program
-Before running the program install the modules in the picture. 
+Before running the program install the modules as in the figure. 
 
-<img width="202" alt="image" src="https://user-images.githubusercontent.com/113350472/218327675-d73c18aa-9e3c-48e1-b9e7-db7bb2b5db95.png">
+<img width="297" alt="image" src="https://user-images.githubusercontent.com/113350472/218481107-57ee5099-71a7-431b-aed7-673d49e7cc8b.png">
 
 ### Reference:
 [1]   Ryan Mitchell, 2018, Web Scraping with Python,COLLECTING MORE DATA FROM THE MODERN WEB, 2nd edition, O’Reilly Media
