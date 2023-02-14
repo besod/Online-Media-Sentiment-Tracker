@@ -38,15 +38,7 @@ Before running the program install the modules as in the figure.
 
 <img width="297" alt="image" src="https://user-images.githubusercontent.com/113350472/218481107-57ee5099-71a7-431b-aed7-673d49e7cc8b.png">
 
-### Reference:
-[1]   Ryan Mitchell, 2018, Web Scraping with Python,COLLECTING MORE DATA FROM THE MODERN WEB, 2nd edition, O’Reilly Media
 
-[2]   Jim, 'Web Scraping with Python - Beautiful Soup Crash Course' [https://www.youtube.com/watch?v=XVv6mJpFOb0&t=786s&ab_channel=freeCodeCamp.org],
-freeCodeCamp.org
-
-[3]  CSS Selectors,[https://www.geeksforgeeks.org/css-syntax-and-selectors/?ref=lbp], geek for geeks
-
-[4]  Beautiful Soup Documentation, [https://beautiful-soup-4.readthedocs.io/en/latest/index.html?highlight=css%20selector#css-selectors], Beautifulsoup
 
 
 
