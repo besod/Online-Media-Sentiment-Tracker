@@ -117,7 +117,7 @@ def main():
                     print('\nERROR! CATEGORY NOT FOUND...\n')       
                 
                 #wait for 24 hours before scraping again                      
-                time.sleep(5)
+                time.sleep(60*60*24)
                 print("Waiting 24 hrs...")
             '''Propts user to add new category and corresponding search word/topic'''   
         elif user_choice == '2':#add/remove category in/from search_words table in the database
