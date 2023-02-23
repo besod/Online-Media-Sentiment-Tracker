@@ -54,10 +54,10 @@ def main():
     '''List of websites to scrape stored in a list. HTML and CSS elements are saved in order(see class 'Website').This can eventually be saved in a database.'''
     site_data = [
                 ['Reuters','http://reuters.com','http://www.reuters.com/search/news?blob=','div.search-result-content','h3.search-result-title a',False, 'h1','div.article-body__content__17Yit '],
-                # ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article'],
-                # ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
-                # ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
-                # ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body']
+                ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article'],
+                ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
+                ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
+                ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body']
                 ]
    
     scraper = Scraper()
@@ -94,6 +94,7 @@ def main():
                     table.add_row(row)                
                 table.align["Category"] = "l"
                 table.align["Topic"] = "l" 
+                table.align["Created"] = "l"
                 print(table)
                 
                 #prompt the user to enter category from the table 

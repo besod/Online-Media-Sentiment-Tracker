@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from connect import Connect
+
 from content import Content 
 from website import Website
 import sqlite3
@@ -64,7 +64,7 @@ class Scraper:
                     cursor_scraper.execute("SELECT COUNT(*) FROM articles WHERE url=?", (url,))
                     result = cursor_scraper.fetchone()[0]
                     if result > 0:
-                        print(f"Article '{url}' already exists in the database.")
+                        print(f"\nArticle '{url}' already exists in the database.")
                         continue
                 
                     # Insert the scraped data into the 'data' table
@@ -74,7 +74,7 @@ class Scraper:
                         connection.commit()
                         print(f"Article with url '{url}' saved to the database.\n")
                     except sqlite3.IntegrityError as e:
-                        print(f"An error occurred while saving '{title}': {e}")
+                        print(f"\nAn error occurred while saving '{title}': {e}")
                         connection.rollback()
                 
                 if title == None:
