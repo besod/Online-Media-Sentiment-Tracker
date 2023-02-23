@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
 from content import Content 
-from website import Website
 import sqlite3
 
 '''The Scraper class is written to start from the home page of each site, locate internal
@@ -72,7 +70,8 @@ class Scraper:
                         cursor_scraper.execute("INSERT INTO articles (topic,title,url,body) VALUES ( ?, ?, ?, ?)",
                                     (topic, title, url,body))
                         connection.commit()
-                        print(f"Article with url '{url}' saved to the database.\n")
+                        print(f"\nArticle with url '{url}' saved to the database.\n")
+                        
                     except sqlite3.IntegrityError as e:
                         print(f"\nAn error occurred while saving '{title}': {e}")
                         connection.rollback()

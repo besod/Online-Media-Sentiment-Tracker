@@ -14,4 +14,4 @@ class Content:
         print("New article found for topic: {}".format(self.topic))
         print("TITLE: {}".format(self.title))
         print("URL: {}".format(self.url))
-        print("BODY: {}".format(self.body))
+        print("CONTENT: {}".format(self.body))

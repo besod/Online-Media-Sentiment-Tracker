@@ -1,10 +1,9 @@
 from scraper import Scraper
 from website import Website
 import sqlite3
-from texttable import Texttable
 from prettytable import PrettyTable
-import sys
 import time
+import datetime
 
 def main():  
     '''categories and their respective list of topics to search for is saved in dictionary and nested lists during initial development.'''
@@ -54,10 +53,10 @@ def main():
     '''List of websites to scrape stored in a list. HTML and CSS elements are saved in order(see class 'Website').This can eventually be saved in a database.'''
     site_data = [
                 ['Reuters','http://reuters.com','http://www.reuters.com/search/news?blob=','div.search-result-content','h3.search-result-title a',False, 'h1','div.article-body__content__17Yit '],
-                ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article'],
                 ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
                 ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
-                ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body']
+                ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body'],
+                ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article']
                 ]
    
     scraper = Scraper()
@@ -116,7 +115,10 @@ def main():
                     print('Check your database!\n')
                 except TypeError:
                     print('\nERROR! CATEGORY NOT FOUND...\n')       
-            
+                
+                #wait for 24 hours before scraping again                      
+                time.sleep(5)
+                print("Waiting 24 hrs...")
             '''Propts user to add new category and corresponding search word/topic'''   
         elif user_choice == '2':#add/remove category in/from search_words table in the database
                              
@@ -206,8 +208,8 @@ def main():
         else:
             msg=" Ooops...! You\'ve gone off script. We love to improve, but let's take it from the top and try again.\n"
             print('\n',msg.upper())
-            continue                    
-
+            continue   
+                
        
 if __name__ == '__main__':
     main()   
