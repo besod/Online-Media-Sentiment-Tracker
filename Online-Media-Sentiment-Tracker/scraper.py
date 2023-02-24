@@ -62,7 +62,7 @@ class Scraper:
                     cursor_scraper.execute("SELECT COUNT(*) FROM articles WHERE url=?", (url,))
                     result = cursor_scraper.fetchone()[0]
                     if result > 0:
-                        print(f"\nArticle '{url}' already exists in the database.")
+                        print(f"\nArticle '{url}' already exists in the database.\n")
                         continue
                 
                     # Insert the scraped data into the 'data' table

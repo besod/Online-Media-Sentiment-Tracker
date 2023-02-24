@@ -53,10 +53,10 @@ def main():
     '''List of websites to scrape stored in a list. HTML and CSS elements are saved in order(see class 'Website').This can eventually be saved in a database.'''
     site_data = [
                 ['Reuters','http://reuters.com','http://www.reuters.com/search/news?blob=','div.search-result-content','h3.search-result-title a',False, 'h1','div.article-body__content__17Yit '],
-                ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
-                ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
-                ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body'],
-                ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article']
+                # ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
+                # ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
+                # ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body'],
+                # ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article']
                 ]
    
     scraper = Scraper()
@@ -81,7 +81,7 @@ def main():
             '''Displays the category and their respective search word/topic in a table format.Loops that iterates
             through all the topics and all the websites after receiving category from the user.
             It contains a search function that navigates to the search page for a particular website and topic,
-            and extracts all the result URLs listed on that page.'''    
+            and extracts all the result URLs listed on that page.The scraper runs once in 24 hrs.'''    
             while True:
                 # fetch the contents of the search_words table and display it in table form using prettytable
                 cursor_search_words.execute("SELECT * from search_words")
@@ -100,25 +100,28 @@ def main():
                 category_choice = input("Enter a category (Press 'b' anytime to go back to the main menu): \n")
                 if category_choice == 'b':
                     break
+                while True:
+                    #try/except block checks if the user enters category that exists in the list provided.
+                    try:
+                        cursor_search_words.execute("SELECT topic FROM search_words WHERE category=?",(category_choice,))
+                        topics_str = cursor_search_words.fetchone()[0]
+                        topics = topics_str.split(', ')
+                        print(topics)
+                                
+                        for topic in topics:
+                            print(f'GETTING INFO ABOUT CATEGORY "{category_choice}" AND SEARCH WORDS ARE {topics}: ')
+                            for target_site in sites:
+                                scraper.search(topic, target_site)     
+                                                    
+                        print('Check your database!\n')
+                        #wait for 24 hours before scraping again                      
+                        time.sleep(60*60*24)
+                        print("Waiting 24 hrs till the next job...") 
+                           
+                    except TypeError:
+                        print('\nERROR! CATEGORY NOT FOUND...\n')       
                 
-                #try/except block checks if the user enters category that exists in the list provided
-                try:
-                    cursor_search_words.execute("SELECT topic FROM search_words WHERE category=?",(category_choice,))
-                    topics_str = cursor_search_words.fetchone()[0]
-                    topics = topics_str.split(', ')
-                    print(topics)
-                              
-                    for topic in topics:
-                        print(f'GETTING INFO ABOUT CATEGORY "{category_choice}" AND SEARCH WORDS ARE {topics}: ')
-                        for target_site in sites:
-                            scraper.search(topic, target_site)                      
-                    print('Check your database!\n')
-                except TypeError:
-                    print('\nERROR! CATEGORY NOT FOUND...\n')       
-                
-                #wait for 24 hours before scraping again                      
-                time.sleep(60*60*24)
-                print("Waiting 24 hrs...")
+                    
             '''Propts user to add new category and corresponding search word/topic'''   
         elif user_choice == '2':#add/remove category in/from search_words table in the database
                              
@@ -156,8 +159,8 @@ def main():
             else:
                 print("Invalid action. Please enter 'add', 'remove'.")
             
-
             connection.commit()
+            connection.close()   
                
         elif user_choice == '3':
             '''This block of code updates database search words.The program continously prompts the user to 
@@ -213,3 +216,4 @@ def main():
        
 if __name__ == '__main__':
     main()   
+   
