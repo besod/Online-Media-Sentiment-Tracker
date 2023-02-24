@@ -1,3 +1,4 @@
+
 class Website:
     """Contains information about website structure."""
     def __init__(self, name, url, search_url, result_listing,
@@ -9,4 +10,4 @@ class Website:
         self.result_url = result_url # defines the box that holds information about each result
         self.absolute_url=absolute_url #boolean property to tell if result link is absolut or relativ
         self.title_tag = title_tag #title of the articles searched 
-        self.body_tag = body_tag
+        self.body_tag = body_tag #article text body to fetch

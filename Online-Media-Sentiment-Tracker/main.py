@@ -9,7 +9,7 @@ def main():
     '''categories and their respective list of topics to search for is saved in dictionary and nested lists during initial development.'''
     categories = {"poletics":['Election','corruption'],
                   "climate change":['Drought','Extreme temperature'],
-                  "finance":['Inflation','Interest rate'],
+                  "finance":['Inflation','Interest rate','recesssion'],
                   "science":['Natural Resources']
                   }
     print(f'\nWELCOME TO THE GREATEST WEB SCRAPER IN THE WORLD.\n') 
@@ -53,10 +53,10 @@ def main():
     '''List of websites to scrape stored in a list. HTML and CSS elements are saved in order(see class 'Website').This can eventually be saved in a database.'''
     site_data = [
                 ['Reuters','http://reuters.com','http://www.reuters.com/search/news?blob=','div.search-result-content','h3.search-result-title a',False, 'h1','div.article-body__content__17Yit '],
-                # ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
-                # ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
-                # ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body'],
-                # ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article']
+                ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
+                ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
+                ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body'],
+                ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article']
                 ]
    
     scraper = Scraper()
@@ -114,9 +114,9 @@ def main():
                                 scraper.search(topic, target_site)     
                                                     
                         print('Check your database!\n')
-                        #wait for 24 hours before scraping again                      
-                        time.sleep(60*60*24)
-                        print("Waiting 24 hrs till the next job...") 
+                        #wait for 24 hours before scraping again
+                        print("Waiting 24 hrs till the next job...")                       
+                        time.sleep(60*60*24)                       
                            
                     except TypeError:
                         print('\nERROR! CATEGORY NOT FOUND...\n')       
@@ -212,8 +212,8 @@ def main():
             msg=" Ooops...! You\'ve gone off script. We love to improve, but let's take it from the top and try again.\n"
             print('\n',msg.upper())
             continue   
-                
-       
+
+      
 if __name__ == '__main__':
     main()   
    
