@@ -110,20 +110,17 @@ def main():
                     for topic in topics:
                         print(f'\nGETTING INFO ABOUT CATEGORY "{category_choice}" AND SEARCH WORDS ARE {topics}: \n')
                         for target_site in sites:
-                            scraper.search(topic, target_site)     
-                                                
+                            scraper.search(topic, target_site)                                                   
                         print('Check your database!\n')
-                            #wait for 24 hours before scraping again
+                           
                 except TypeError:
-                    print('\nERROR! CATEGORY NOT FOUND...\n')       
-                
+                    print('\nERROR! CATEGORY NOT FOUND...\n')                   
                     
             '''Propts user to add new category and corresponding search word/topic'''   
         elif user_choice == '2':#add/remove category in/from search_words table in the database
                              
            # Prompt the user to choose an action
             action = input("Type 'add' to add a category or 'remove' to remove a category(press 'b' to go back): ").casefold()
-
             if action == 'add':
                 # Prompt the user to enter a new category and topics
                 category = input("Enter a new category: ").casefold()          
@@ -177,8 +174,7 @@ def main():
                         # If the category exists, prompt user for action
                         action = input("\nType 'add' to add search word or 'remove' to remove search word (Press 'b' to exit): ").casefold()
                         if action == 'b':
-                            break
-                    
+                            break                    
                         if action == 'add':                  
                             while True:
                                 topics = input("Type topic words separated by commas: ")
