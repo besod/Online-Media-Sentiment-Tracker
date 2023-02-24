@@ -117,8 +117,8 @@ def main():
                     print('\nERROR! CATEGORY NOT FOUND...\n')                   
                     
             '''Propts user to add new category and corresponding search word/topic'''   
-        elif user_choice == '2':#add/remove category in/from search_words table in the database
-                             
+        elif user_choice == '2':
+                                         
            # Prompt the user to choose an action
             action = input("Type 'add' to add a category or 'remove' to remove a category(press 'b' to go back): ").casefold()
             if action == 'add':
@@ -137,8 +137,7 @@ def main():
                     print("Error: Category already exists in the database.")
             elif action == 'remove':
                 # Prompt the user to enter the category to be removed
-                category = input("Type the category to be removed: ").casefold()
-                
+                category = input("Type the category to be removed: ").casefold()                
                 # Check if the category exists in the database
                 cursor_search_words.execute("SELECT COUNT(*) FROM search_words WHERE category=?", (category,))
                 if cursor_search_words.fetchone()[0] == 1:
@@ -147,8 +146,7 @@ def main():
                     print("Category removed successfully.")
                 else:
                     # If the category does not exist, print an error message
-                    print("Error: Category does not exist in the database.")
-   
+                    print("Error: Category does not exist in the database.")   
             else:
                 print("Invalid action. Please enter 'add', 'remove'.")
             
@@ -160,7 +158,6 @@ def main():
             enter catagory to be updated.'Add' replaces the old search words with new ones given by the user.
             'Remove' replaces the search words with null value.'''
             
-            # Prompt the user to enter the category to be updated
             while True:                                         
                 category = input("Type the category to be updated (Press 'b' to go back to main menu): ").casefold()
                 if category == 'b':
