@@ -53,10 +53,10 @@ def main():
     '''List of websites to scrape stored in a list. HTML and CSS elements are saved in order(see class 'Website').This can eventually be saved in a database.'''
     site_data = [
                 ['Reuters','http://reuters.com','http://www.reuters.com/search/news?blob=','div.search-result-content','h3.search-result-title a',False, 'h1','div.article-body__content__17Yit '],
-                ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
-                ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
-                ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body'],
-                ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article']
+                # ['Brookings','https://brookings.edu','https://www.brookings.edu/search/?s=','div.article-info','h4 a',True,'h1','div.post-body'],  
+                # ['The economist','https://www.economist.com','https://www.economist.com/search?q=','li._result-item','a',True,'h1','div.css-13gy2f5'],
+                # ['forbes','https://www.forbes.com','https://www.forbes.com/search/?q=','div.search-results h3','a',True,'h1','div.article-body'],
+                # ['apnews','https://apnews.com','https://apnews.com/hub/trending-news','ul li','a',False,'h1','article']
                 ]
    
     scraper = Scraper()
@@ -97,36 +97,32 @@ def main():
                 print(table)
                 
                 #prompt the user to enter category from the table 
-                category_choice = input("Enter a category (Press 'b' anytime to go back to the main menu): \n")
+                category_choice = input("Type a category (Press 'b' anytime to go back to the main menu): ")
                 if category_choice == 'b':
                     break
-                while True:
-                    #try/except block checks if the user enters category that exists in the list provided.
-                    try:
-                        cursor_search_words.execute("SELECT topic FROM search_words WHERE category=?",(category_choice,))
-                        topics_str = cursor_search_words.fetchone()[0]
-                        topics = topics_str.split(', ')
-                        print(topics)
-                                
-                        for topic in topics:
-                            print(f'GETTING INFO ABOUT CATEGORY "{category_choice}" AND SEARCH WORDS ARE {topics}: ')
-                            for target_site in sites:
-                                scraper.search(topic, target_site)     
-                                                    
+                
+                #try/except block checks if the user enters category that exists in the list provided.
+                try:
+                    cursor_search_words.execute("SELECT topic FROM search_words WHERE category=?",(category_choice,))
+                    topics_str = cursor_search_words.fetchone()[0]
+                    topics = topics_str.split(', ')
+                                                
+                    for topic in topics:
+                        print(f'\nGETTING INFO ABOUT CATEGORY "{category_choice}" AND SEARCH WORDS ARE {topics}: \n')
+                        for target_site in sites:
+                            scraper.search(topic, target_site)     
+                                                
                         print('Check your database!\n')
-                        #wait for 24 hours before scraping again
-                        print("Waiting 24 hrs till the next job...")                       
-                        time.sleep(60*60*24)                       
-                           
-                    except TypeError:
-                        print('\nERROR! CATEGORY NOT FOUND...\n')       
+                            #wait for 24 hours before scraping again
+                except TypeError:
+                    print('\nERROR! CATEGORY NOT FOUND...\n')       
                 
                     
             '''Propts user to add new category and corresponding search word/topic'''   
         elif user_choice == '2':#add/remove category in/from search_words table in the database
                              
            # Prompt the user to choose an action
-            action = input("Enter 'add' to add a category or 'remove' to remove a category: ").casefold()
+            action = input("Type 'add' to add a category or 'remove' to remove a category(press 'b' to go back): ").casefold()
 
             if action == 'add':
                 # Prompt the user to enter a new category and topics
@@ -136,7 +132,7 @@ def main():
                 cursor_search_words.execute("SELECT COUNT(*) FROM search_words WHERE category=?", (category,))
                 # If the category does not exist, insert the data into the database
                 if cursor_search_words.fetchone()[0] == 0:
-                    topics = input("Enter topic words separated by commas: ")                    
+                    topics = input("Type topic words separated by commas: ")                    
                     cursor_search_words.execute("INSERT INTO search_words (category, topic) VALUES (?, ?)", (category, topics))
                     print("Data inserted successfully.")
                 else:
@@ -144,7 +140,7 @@ def main():
                     print("Error: Category already exists in the database.")
             elif action == 'remove':
                 # Prompt the user to enter the category to be removed
-                category = input("Enter the category to be removed: ").casefold()
+                category = input("Type the category to be removed: ").casefold()
                 
                 # Check if the category exists in the database
                 cursor_search_words.execute("SELECT COUNT(*) FROM search_words WHERE category=?", (category,))
@@ -169,7 +165,7 @@ def main():
             
             # Prompt the user to enter the category to be updated
             while True:                                         
-                category = input("Enter the category to be updated (Press 'b' to go back to main menu): ").casefold()
+                category = input("Type the category to be updated (Press 'b' to go back to main menu): ").casefold()
                 if category == 'b':
                     break
                 
@@ -179,13 +175,13 @@ def main():
                     
                     while True:
                         # If the category exists, prompt user for action
-                        action = input("\nEnter 'add' to add search word or 'remove' to remove search word (Press 'b' to exit): ").casefold()
+                        action = input("\nType 'add' to add search word or 'remove' to remove search word (Press 'b' to exit): ").casefold()
                         if action == 'b':
                             break
                     
                         if action == 'add':                  
                             while True:
-                                topics = input("Enter topic words separated by commas: ")
+                                topics = input("Type topic words separated by commas: ")
                                 if topics=='':
                                     print('ERROR! EMPTY ENTRY NOT ALLOWED.')
                                 else:
@@ -216,4 +212,4 @@ def main():
       
 if __name__ == '__main__':
     main()   
-   
+        
