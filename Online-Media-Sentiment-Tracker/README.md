@@ -1,6 +1,6 @@
 
 ### Online-Media-Sentiment-Tracker
-Online media sentiment tracker is written in python to crawl websites.  
+Online media sentiment tracker is written in python to crawl websites. The program scrapes news websites using search words from a database. Category and search words list is already created in sqlite.User can update categories and search words in the table. The scraped title, url and article of website is then printed in the terminal. It also saves the scraped articles in sqlite database.   
 
 ### Description
 As we consume news online we get a glimpse of current events.But it's difficult to keep track of how much attention is devoted to different
@@ -18,26 +18,26 @@ list of links
 URL(e.g. http://example.com/articles/page.html). Which ever the case is the URL is stored 
 as property of the Website class object.
 
-The script loops through all the topics in the search word/topics list and announces 
+* The script loops through all the topics in the search word/topics list and announces 
 before it starts scraping for a topic: 
 
-<img width="256" alt="image" src="https://user-images.githubusercontent.com/113350472/218481335-80c50202-54d6-4438-87a8-53a14c502619.png">
+   ![image](https://user-images.githubusercontent.com/113350472/221377352-522d370b-38e4-4bdc-85df-c33d97d3dd2b.png)
 
-Then it loops through all of the sites in the sites list and scrapes earch particular
+* Then it loops through all of the sites in the sites list and scrapes earch particular
 site for each particular topic. After successfully scraping information about a page,
 it prints it in the terminal:
 
-<img width="534" alt="image" src="https://user-images.githubusercontent.com/113350472/218328828-e7cbe4a3-7415-40e7-b67d-3d884f285b74.png">
+   ![image](https://user-images.githubusercontent.com/113350472/221377305-ee34bf9c-13b4-4197-a21b-c65d99e1f9df.png)
 
 
 
-
-
+* Sentiment alanlysis is made using NLTK.
+* Visualization of data is made with pandas in jupyter notebook.
 
 ### How to run the program
 Before running the program install the modules as in the figure. 
 
-<img width="297" alt="image" src="https://user-images.githubusercontent.com/113350472/218481107-57ee5099-71a7-431b-aed7-673d49e7cc8b.png">
+   ![image](https://user-images.githubusercontent.com/113350472/221377414-52960434-62c3-4d6a-9131-31c6d22ca1e7.png)
 
 
 
