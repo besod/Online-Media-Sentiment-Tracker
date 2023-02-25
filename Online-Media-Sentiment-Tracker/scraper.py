@@ -53,7 +53,7 @@ class Scraper:
                 body=self.get_element(soup,site.body_tag)#selects the article element and extracts the full article
                 
                 if title != '' and body != '':                            
-                    content = Content(topic, url, title,body)
+                    content = Content(topic, url, title)
                     content.print()
                     connection = sqlite3.connect("newsArticle.db")
                     cursor_scraper = connection.cursor()         

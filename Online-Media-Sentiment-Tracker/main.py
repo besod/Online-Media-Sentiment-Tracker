@@ -149,7 +149,7 @@ def main():
                     print("Error: Category does not exist in the database.")   
             else:
                 print("Invalid action. Please enter 'add', 'remove'.")
-            
+                            
             connection.commit()
             connection.close()   
                
