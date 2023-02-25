@@ -27,7 +27,7 @@ Then it loops through all of the sites in the sites list and scrapes earch parti
 site for each particular topic. After successfully scraping information about a page,
 it prints it in the terminal:
 
-image.png
+<img width="534" alt="image" src="https://user-images.githubusercontent.com/113350472/218328828-e7cbe4a3-7415-40e7-b67d-3d884f285b74.png">
 
 
 
