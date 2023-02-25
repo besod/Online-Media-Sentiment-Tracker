@@ -35,7 +35,7 @@ it prints it in the terminal:
 * Visualization of data is made with pandas in jupyter notebook.
 
 ### How to run the program
-Before running the program install the modules as in the figure. 
+Before running the program install the modules: 
 ``` 
 $ pip install beautifulsoup4
 ``` 
