@@ -36,8 +36,17 @@ it prints it in the terminal:
 
 ### How to run the program
 Before running the program install the modules as in the figure. 
+``` 
+$ pip install beautifulsoup4
+``` 
+``` 
+$ pip install requests
+``` 
+``` 
+$ pip install prettytable
+``` 
 
-   ![image](https://user-images.githubusercontent.com/113350472/221377414-52960434-62c3-4d6a-9131-31c6d22ca1e7.png)
+   
 
 
 
