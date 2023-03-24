@@ -8,7 +8,7 @@ events in the media. There are lots of articles in the media but how much is wri
 answers this question using web scraping. 
 
 #### Scraping Sites Through Search
-* Most sites retrive a list of search results flr a particular topic by passing 
+* Most sites retrive a list of search results for a particular topic by passing 
 that topic as a string through a parameter in the URL.http://exam
 ple.com?search=Topic, the first part of this URL can be saved as property of the class Website class object, 
 and the topic is appended to it. 
