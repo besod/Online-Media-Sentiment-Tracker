@@ -2,10 +2,25 @@
 ### Online-Media-Sentiment-Tracker
 Online media sentiment tracker is written in python to crawl websites. The program scrapes news websites using search words from a database. Category and search words list is already created in sqlite.User can update categories and search words in the table. The scraped title, url and article of website is then printed in the terminal. It also saves the scraped articles in sqlite database.   
 
-### Description
-As we consume news online we get a glimpse of current events.But it's difficult to keep track of how much attention is devoted to different
-events in the media. There are lots of articles in the media but how much is written about a specific subject? Online media sentiment tracker
-answers this question using web scraping. 
+
+**Description:**  
+As we consume news online, we get a glimpse of current events. However, it can be difficult to keep track of how much attention is devoted to different events in the media. With numerous articles published daily, quantifying the coverage of specific subjects becomes challenging. The Online Media Sentiment Tracker addresses this issue by using web scraping to monitor and analyze the sentiment of online media coverage.
+
+**Technologies Used:**  
+- **Python** 🐍: For overall application development and scripting.
+- **SQLite3** 🗄️: For efficient and lightweight database management.
+- **Jupyter Notebook** 📓: For interactive data analysis and visualization.
+- **Pandas** 🐼: For data manipulation and analysis.
+- **NLTK** 🧠: For natural language processing and sentiment analysis.
+
+**Key Features:**  
+- **Web Scraping:** Automated extraction of news articles from various online sources.
+- **Sentiment Analysis:** Utilizing NLTK for sentiment analysis, the system evaluates the emotional tone of news articles, categorizing them as positive, negative, or neutral.
+- **Machine Learning:** The sentiment analysis component employs machine learning algorithms to train and classify text data, enhancing accuracy over time.
+- **Data Storage:** Efficient storage and retrieval of articles and sentiment data using SQLite3, ensuring scalability and performance.
+- **Data Visualization:** Interactive analysis and visualization of media coverage trends using Jupyter Notebook and Pandas, allowing users to explore sentiment patterns and correlations.
+- **Automation:** The project automates the process of collecting and analyzing news articles, reducing manual effort and enabling real-time monitoring of media sentiment.
+
 
 #### Scraping Sites Through Search
 * Most sites retrive a list of search results for a particular topic by passing 
